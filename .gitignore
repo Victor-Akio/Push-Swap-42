@@ -1,3 +1,8 @@
+pyviz.py
+.vscode
+Output.log
+
+
 # Prerequisites
 *.d
 

@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 05:14:26 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/05/15 21:24:35 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/05/18 22:04:08 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ typedef struct s_big
 {
 	int		i;
 	int		j;
+	int		p0;
 	int		p1;
 	int		p2;
 	int		p3;
 	int		p4;
-	int		p5;
 	int		len1;
 	int		len2;
 	int		len3;

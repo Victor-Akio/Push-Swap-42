@@ -6,12 +6,12 @@
 #    By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/25 04:31:56 by vminomiy          #+#    #+#              #
-#    Updated: 2021/05/13 18:47:51 by vminomiy         ###   ########.fr        #
+#    Updated: 2021/05/19 19:02:18 by vminomiy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PS_NAME		=	push_swap
-C_NAME		=	checker
+# C_NAME		=	checker
 
 CC			=	clang
 
@@ -42,14 +42,14 @@ PS_FILES	=	ps_srcs/ps_main.c			\
 				ps_srcs/ps_rrab.c			\
 				ps_srcs/ps_maxmin.c
 
-C_FILES		=	c_srcs/c_main.c				\
-				c_srcs/c_args.c				\
-				c_srcs/c_parser.c			\
-				c_srcs/c_print.c			\
-				c_srcs/c_swap_sab.c			\
-				c_srcs/c_swap_pab.c			\
-				c_srcs/c_swap_rab.c			\
-				c_srcs/c_swap_rrab.c		
+# C_FILES		=	c_srcs/c_main.c				\
+# 				c_srcs/c_args.c				\
+# 				c_srcs/c_parser.c			\
+# 				c_srcs/c_print.c			\
+# 				c_srcs/c_swap_sab.c			\
+# 				c_srcs/c_swap_pab.c			\
+# 				c_srcs/c_swap_rab.c			\
+# 				c_srcs/c_swap_rrab.c		
 
 PS_SRCS		=	$(addprefix $(DIR), $(PS_FILES))
 # C_SRCS		=	$(addprefix $(DIR), $(C_FILES))
@@ -87,4 +87,4 @@ fclean		:	clean
 
 re			:	fclean all
 
-.PHONY		:	clean fclean re
+.PHONY		:	all clean fclean re
