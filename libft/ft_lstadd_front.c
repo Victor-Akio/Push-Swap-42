@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 08:41:39 by hbuisser          #+#    #+#             */
-/*   Updated: 2021/05/20 21:52:20 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/11/27 16:57:49 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/11/27 16:57:50 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_arg(char **arg)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	if (*arg)
-		free(*arg);
-	*arg = NULL;
-}
-
-char	**ft_free(char **array, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
+	if (*alst != NULL)
 	{
-		free(array[i]);
-		i++;
+		new->next = *alst;
+		*alst = new;
 	}
-	free(array);
-	return (NULL);
+	else if (new != NULL)
+		*alst = new;
 }

@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 08:41:39 by hbuisser          #+#    #+#             */
-/*   Updated: 2021/05/20 21:52:20 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/11/27 16:57:37 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/11/27 16:57:38 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_arg(char **arg)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (*arg)
-		free(*arg);
-	*arg = NULL;
-}
-
-char	**ft_free(char **array, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-	return (NULL);
+	del(lst->content);
+	free(lst);
+	lst = NULL;
 }

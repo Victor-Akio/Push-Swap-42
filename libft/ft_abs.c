@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 08:41:39 by hbuisser          #+#    #+#             */
-/*   Updated: 2021/05/20 21:52:20 by vminomiy         ###   ########.fr       */
+/*   Created: 2021/06/03 22:34:10 by vminomiy          #+#    #+#             */
+/*   Updated: 2021/06/03 22:37:32 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_arg(char **arg)
+int	ft_abs(float num)
 {
-	if (*arg)
-		free(*arg);
-	*arg = NULL;
-}
+	int	dummy;
 
-char	**ft_free(char **array, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-	return (NULL);
+	dummy = (int)num;
+	if ((num - dummy) >= 0.5)
+		return ((int) num + 1);
+	else
+		return ((int) num);
 }

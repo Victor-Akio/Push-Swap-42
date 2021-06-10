@@ -6,7 +6,7 @@
 #    By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/25 04:31:56 by vminomiy          #+#    #+#              #
-#    Updated: 2021/05/19 19:02:18 by vminomiy         ###   ########.fr        #
+#    Updated: 2021/06/11 00:05:43 by vminomiy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,24 +32,23 @@ INCLUDE		=	-I include/					\
 
 RM			=	/bin/rm -f
 
-PS_FILES	=	ps_srcs/ps_main.c			\
-				ps_srcs/ps_parser.c			\
-				ps_srcs/ps_parser_big.c		\
-				ps_srcs/ps_parser_sort.c	\
-				ps_srcs/ps_rsab.c			\
-				ps_srcs/ps_pab.c			\
-				ps_srcs/ps_initialize.c		\
-				ps_srcs/ps_rrab.c			\
-				ps_srcs/ps_maxmin.c
+PS_FILES	=	main.c			\
+				list.c			\
+				list_sort.c		\
+				list_u1.c		\
+				list_u2.c		\
+				check.c			\
+				init.c			\
+				case.c			\
+				algo_short.c	\
+				algo_bigger.c	\
+				norm.c			\
+				get.c			\
+				op_p.c			\
+				op_r.c			\
+				op_s.c
 
-# C_FILES		=	c_srcs/c_main.c				\
-# 				c_srcs/c_args.c				\
-# 				c_srcs/c_parser.c			\
-# 				c_srcs/c_print.c			\
-# 				c_srcs/c_swap_sab.c			\
-# 				c_srcs/c_swap_pab.c			\
-# 				c_srcs/c_swap_rab.c			\
-# 				c_srcs/c_swap_rrab.c		
+# C_FILES		=	c_srcs/c_main.c	
 
 PS_SRCS		=	$(addprefix $(DIR), $(PS_FILES))
 # C_SRCS		=	$(addprefix $(DIR), $(C_FILES))

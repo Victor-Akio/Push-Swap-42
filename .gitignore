@@ -1,7 +1,7 @@
 pyviz.py
 .vscode
 Output.log
-
+.vscode/launch.json
 
 # Prerequisites
 *.d

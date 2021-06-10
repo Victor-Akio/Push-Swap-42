@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_swap_rrab.c                                      :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/28 00:23:24 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/04/26 20:49:58 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/11/27 16:57:56 by vminomiy          #+#    #+#             */
+/*   Updated: 2021/05/26 22:30:38 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "libft.h"
 
-void	swap_rrab(int *stk, int size)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	int		i;
-	int		tmp;
+	t_list	*ptr;
 
-	i = size - 1;
-	tmp = stk[size -1];
-	while (i > 0)
+	if (*alst != NULL)
 	{
-		stk[i] = stk[i - 1];
-		i--;
+		ptr = *alst;
+		while (ptr->next != NULL)
+			ptr = ptr->next;
+		ptr->next = new;
 	}
-	stk[0] = tmp;
-}
-
-void	swap_rrr(t_var *v)
-{
-	swap_rrab(v->stack_a, v->len_a);
-	swap_rrab(v->stack_b, v->len_b);
+	else if (new != NULL)
+		*alst = new;
 }

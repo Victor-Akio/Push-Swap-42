@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_swap_rab.c                                       :+:      :+:    :+:   */
+/*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/28 00:12:31 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/04/26 20:50:07 by vminomiy         ###   ########.fr       */
+/*   Created: 2021/05/20 21:06:23 by vminomiy          #+#    #+#             */
+/*   Updated: 2021/06/03 09:40:10 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	swap_rab(int *stk, int size)
+t_stk	*fill_list(t_var *v, char **split, t_stk *tmp)
 {
 	int		i;
-	int		tmp;
 
-	i = 0;
-	tmp = stk[0];
-	while (i < size - 1)
+	i = -1;
+	while (split[++i])
 	{
-		stk[i] = stk[i + 1];
-		i++;
+		tmp = malloc(sizeof(t_stk));
+		if (tmp == NULL)
+			return (NULL);
+		tmp->num = ps_atoll(split[i]);
+		if (tmp->num > 2147483647 || tmp->num < -2147483648)
+			ft_exit("ERROR - int overflow.\n", 1);
+		tmp->nxt = NULL;
+		tmp->prv = NULL;
+		add_back(&v->a, tmp);
+		tmp = NULL;
 	}
-	stk[size - 1] = tmp;
-}
-
-void	swap_rr(t_var *v)
-{
-	swap_rab(v->stack_a, v->len_a);
-	swap_rab(v->stack_b, v->len_b);
+	return (v->a);
 }

@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_swap_sab.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 21:40:02 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/04/26 20:49:48 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/11/27 16:57:08 by vminomiy          #+#    #+#             */
+/*   Updated: 2021/05/26 22:31:49 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "libft.h"
 
-void	swap_sab(int *stk, int size)
+int	ft_lstsize(t_list *lst)
 {
-	int		tmp;
+	int	count;
 
-	if (size >= 2)
+	count = 0;
+	while (lst != NULL)
 	{
-		tmp = stk[0];
-		stk[0] = stk[1];
-		stk[1] = tmp;
+		lst = lst->next;
+		count++;
 	}
-}
-
-void	swap_ss(t_var *v)
-{
-	swap_sab(v->stack_a, v->len_a);
-	swap_sab(v->stack_b, v->len_b);
+	return (count);
 }

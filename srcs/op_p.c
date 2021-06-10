@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freearray.c                                     :+:      :+:    :+:   */
+/*   op_p.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 22:14:25 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/05/20 21:46:19 by vminomiy         ###   ########.fr       */
+/*   Created: 2021/05/23 03:30:41 by vminomiy          #+#    #+#             */
+/*   Updated: 2021/06/03 09:23:45 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_free_array(char **array)
+void	p_stk(t_stk **a, t_stk **b, t_stk *tmp)
 {
-	int	i;
-
-	i = 0;
-	while (array[i])
+	tmp = NULL;
+	if (*b == NULL && *a)
 	{
-		free(array[i]);
-		i++;
+		*b = (t_stk *)malloc(sizeof(t_stk));
+		(*b)->prv = NULL;
+		(*b)->num = (*a)->num;
+		(*b)->nxt = NULL;
+		(*a) = (*a)->nxt;
+		(*a)->prv = NULL;
 	}
-	free(array);
-}
-
-char	**ft_freearray(char **array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i])
+	else
 	{
-		free(array[i]);
-		i++;
+		if (*a)
+		{
+			tmp = (t_stk *)malloc(sizeof(t_stk));
+			tmp->num = (*a)->num;
+			tmp->nxt = NULL;
+			tmp->prv = NULL;
+			add_front(b, tmp);
+			(*a) = (*a)->nxt;
+		}
 	}
-	free(array);
-	return (NULL);
 }

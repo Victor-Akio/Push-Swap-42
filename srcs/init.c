@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 08:41:39 by hbuisser          #+#    #+#             */
-/*   Updated: 2021/05/20 21:52:20 by vminomiy         ###   ########.fr       */
+/*   Created: 2021/05/22 20:30:28 by vminomiy          #+#    #+#             */
+/*   Updated: 2021/05/23 03:43:14 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_free_arg(char **arg)
+t_var	*ft_init_var(t_var *v)
 {
-	if (*arg)
-		free(*arg);
-	*arg = NULL;
-}
-
-char	**ft_free(char **array, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-	return (NULL);
+	v = (t_var *)malloc(sizeof(t_var));
+	if (v == NULL)
+		exit(1);
+	v->a = NULL;
+	v->b = NULL;
+	v->len = 0;
+	v->line = NULL;
+	v->split = NULL;
+	v->print = 0;
+	return (v);
 }

@@ -1,55 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_maxmin.c                                        :+:      :+:    :+:   */
+/*   op_s.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/29 22:20:43 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/05/15 22:49:15 by vminomiy         ###   ########.fr       */
+/*   Created: 2021/05/27 00:40:14 by vminomiy          #+#    #+#             */
+/*   Updated: 2021/06/10 22:42:15 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push-swap.h"
+#include "push_swap.h"
 
-int	find_max(int *stk, int n)
+void	s_stk(t_stk **top)
 {
 	int		i;
-	int		index;
-	int		max;
+	int		j;
+	t_stk	*tmp;
 
-	i = 0;
-	index = 0;
-	max = stk[0];
-	while (i < n)
+	tmp = NULL;
+	if ((*top) && (*top)->nxt)
 	{
-		if (stk[i] > max)
-		{
-			index = i;
-			max = stk[i];
-		}
-		i++;
+		tmp = *top;
+		i = (*top)->num;
+		j = (*top)->nxt->num;
+		tmp = *top;
+		(*top)->num = j;
+		tmp = *top;
+		(*top)->nxt->num = i;
+		(*top) = tmp;
 	}
-	return (index);
-}
-
-int	find_min(int *stk, int n)
-{
-	int		i;
-	int		index;
-	int		min;
-
-	i = 0;
-	index = 0;
-	min = stk[0];
-	while (i < n)
-	{
-		if (stk[i] < min)
-		{
-			index = i;
-			min = stk[i];
-		}
-		i++;
-	}
-	return (index);
 }

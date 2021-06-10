@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 08:41:39 by hbuisser          #+#    #+#             */
-/*   Updated: 2021/05/20 21:52:20 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/11/27 16:57:43 by vminomiy          #+#    #+#             */
+/*   Updated: 2021/05/26 22:30:45 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_arg(char **arg)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (*arg)
-		free(*arg);
-	*arg = NULL;
-}
+	t_list	*ptr;
 
-char	**ft_free(char **array, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
+	if (*lst == NULL || del == NULL)
+		return ;
+	ptr = *lst;
+	while (ptr != NULL)
 	{
-		free(array[i]);
-		i++;
+		*lst = ptr;
+		ft_lstdelone(*lst, del);
+		ptr = ptr->next;
 	}
-	free(array);
-	return (NULL);
+	*lst = NULL;
 }
