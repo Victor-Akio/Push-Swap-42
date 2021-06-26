@@ -6,12 +6,15 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:59:28 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/06/10 22:42:06 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/06/26 01:58:40 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+** This funcition return the number associated with the received idx;
+*/
 int	ft_lstnbr(t_stk **stk, int idx)
 {
 	t_stk	*tmp;
@@ -38,28 +41,32 @@ void	ft_lstswp(t_stk *x, t_stk *y)
 	y->num = tmp;
 }
 
+/*
+** This function will sort the list to be used as base for
+** the logic and algorithm;
+*/
 t_stk	*ft_lstsort(t_stk *stk)
 {
-	t_stk	*from;
+	t_stk	*base;
 	t_stk	*tmp;
-	t_stk	*min;
+	t_stk	*cmp;
 
-	from = NULL;
-	from = stk;
+	base = NULL;
+	base = stk;
 	tmp = NULL;
-	min = NULL;
-	while (from->nxt)
+	cmp = NULL;
+	while (base->nxt)
 	{
-		min = from;
-		tmp = from->nxt;
+		cmp = base;
+		tmp = base->nxt;
 		while (tmp)
 		{
-			if (min->num > tmp->num)
-				min = tmp;
+			if (cmp->num > tmp->num)
+				cmp = tmp;
 			tmp = tmp->nxt;
 		}
-		ft_lstswp(from, min);
-		from = from->nxt;
+		ft_lstswp(base, cmp);
+		base = base->nxt;
 	}
 	return (stk);
 }

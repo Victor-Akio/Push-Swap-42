@@ -6,12 +6,16 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 03:30:41 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/06/03 09:23:45 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/06/26 01:13:39 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+** This file has the operations regardin pushing items between stacks;
+** 'pa' 'pb'
+*/
 void	p_stk(t_stk **a, t_stk **b, t_stk *tmp)
 {
 	tmp = NULL;

@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 21:06:23 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/06/03 09:40:10 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/06/26 03:21:17 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_stk	*fill_list(t_var *v, char **split, t_stk *tmp)
 			return (NULL);
 		tmp->num = ps_atoll(split[i]);
 		if (tmp->num > 2147483647 || tmp->num < -2147483648)
-			ft_exit("ERROR - int overflow.\n", 1);
+			ft_exit_ps("ERROR - int overflow.\n", 1);
 		tmp->nxt = NULL;
 		tmp->prv = NULL;
 		add_back(&v->a, tmp);

@@ -6,12 +6,18 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:49:21 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/06/10 22:44:37 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/06/26 01:57:52 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+** The index number will act as base paramenter to rotate numbers in two 
+** situations. Flag '1' will occur when the number you want to know the lower
+** number in the stack, Flag '2' will occur when you want to set the maximun
+** number to the index.
+*/
 int	get_idx(t_stk *stk, int num, int flag)
 {
 	int	i;
@@ -40,26 +46,35 @@ int	get_idx(t_stk *stk, int num, int flag)
 	return (-1);
 }
 
+/*
+** After some research and testing, there is a range of 
+** efficiency when it comes to the size of the lists analyzed
+** 
+*/
 int	get_pivot(t_stk *stk)
 {
 	t_stk	*tmp;
 	int		len;
-	int		max;
+	int		pvt;
 
-	max = 0;
+	pvt = 0;
 	len = 0;
 	tmp = NULL;
 	len = list_size(stk);
 	tmp = ft_lstsort(stk);
-	if (len <= 12)
-		max = ft_abs(len / 2);
-	else if (len > 12 && len < 200)
-		max = ft_abs(len / 4);
+	if (len <= 10)
+		pvt = ft_abs(len / 2);
+	else if (len > 10 && len < 200)
+		pvt = ft_abs(len / 4);
 	else if (len >= 200)
-		max = ft_abs(len / 8);
-	return (ft_lstnbr(&tmp, max));
+		pvt = ft_abs(len / 8);
+	return (ft_lstnbr(&tmp, pvt));
 }
 
+/*
+** This function will pass through the stack to find the maximum
+** number in the stack.
+*/
 int	get_max(t_stk *stk)
 {
 	int		max;
@@ -82,6 +97,10 @@ int	get_max(t_stk *stk)
 	return (max);
 }
 
+/*
+** This function will pass through the stack to find the minimum
+** number in the stack.
+*/
 int	get_min(t_stk *stk)
 {
 	int	min;

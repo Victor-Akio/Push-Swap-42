@@ -6,12 +6,16 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 22:09:47 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/06/03 08:51:14 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/06/26 00:38:26 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+** This file has a parsing method to pick the correct operation to be applied
+** to both stacks.
+*/
 void	next_next_case(t_stk **a, t_stk **b, int c, t_var *v)
 {
 	t_stk	*tmp;

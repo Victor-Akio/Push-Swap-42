@@ -6,12 +6,15 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 21:26:56 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/06/10 22:42:48 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/06/26 03:31:39 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+** Check_sort - will validate if the list is correctly populated;
+*/
 int	check_sort(t_stk **a, int len)
 {
 	t_stk	*tmp;
@@ -24,12 +27,14 @@ int	check_sort(t_stk **a, int len)
 	{
 		if ((tmp)->nxt != NULL && ((tmp)->num < (tmp)->nxt->num))
 			(tmp) = tmp->nxt;
-		else
-			return (0);
+		return (0);
 	}
 	return (1);
 }
 
+/*
+** Check_dup - check if there is any duplicated numbers within the list
+*/
 void	check_dup(char **av)
 {
 	int		i;
@@ -48,7 +53,7 @@ void	check_dup(char **av)
 			else if (ft_strcmp(dup, av[j]) == 0)
 			{
 				ft_free_arg(&dup);
-				ft_exit("ERROR - duplicated values.\n", 1);
+				ft_exit_ps("ERROR - duplicated values.\n", 1);
 			}
 			else
 				j++;
@@ -58,6 +63,9 @@ void	check_dup(char **av)
 	}
 }
 
+/*
+** Check_numbers will validate if all arguments are numbers
+*/
 int	check_numbers(char **av)
 {
 	int		i;
@@ -65,7 +73,7 @@ int	check_numbers(char **av)
 
 	i = -1;
 	if (!av[0])
-		ft_exit("ERROR - no int found in args.\n", 1);
+		ft_exit_ps("ERROR - no int found in args.\n", 1);
 	while (av[++i])
 	{
 		j = -1;
@@ -74,12 +82,18 @@ int	check_numbers(char **av)
 			if (ft_isalpha(av[i][j]) == 1 || av[i][j] == '.'
 			|| ((av[i][j]) == '-' && (av[i][j +1]) == '\0')
 			|| ((av[i][j]) == '+' && (av[i][j +1]) == '\0'))
-				ft_exit("Error - Not valid input in arg.\n", 1);
+				ft_exit_ps("Error - Not valid input in arg.\n", 1);
 		}
 	}
 	return (1);
 }
 
+/*
+** Check_pivot - is responsible to find if flag is '1', related to the stack a
+** where it is important to know if the number is lower or equals to the pivot
+**
+** If flag '2', you intend to check if the number is the pivot selected;
+*/
 int	check_pivot(t_stk *a, int pvt, int flag)
 {
 	while (a)

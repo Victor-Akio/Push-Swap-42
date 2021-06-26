@@ -6,13 +6,19 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 22:04:45 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/06/10 23:57:20 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/06/26 00:20:59 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	norm(t_stk **a, t_stk **b, t_var *v, int min)
+/*
+** The normalize function is responsible for the smart rotation.
+** We are currently using the lower value as index compare
+** with the position found (num); num will find the better
+** where the lower number is located and rotate accordingly;
+*/
+void	normalize(t_stk **a, t_stk **b, t_var *v, int min)
 {
 	int	idx;
 	int	num;
@@ -25,7 +31,20 @@ void	norm(t_stk **a, t_stk **b, t_var *v, int min)
 		pick_case(a, b, RRA, v);
 }
 
-void	sort_min_10(t_stk **a, t_stk **b, int len, t_var *v)
+/*
+** The sort method will use the lower value as parameter
+** If the second number is the lower value, it will rotate
+** the first and second element.
+** If the first element is the lower number it will be sent
+** to stack 'b';
+**
+** In the other hand, while the lower number don't reach the
+** it will use a smart rotation to met this condition;
+** Once met, i will send the top number to the stack 'b'
+**
+** This will occur until there is '3' numbers to be arranged;
+*/
+void	case_with_10(t_stk **a, t_stk **b, int len, t_var *v)
 {
 	int		i;
 	int		min;
@@ -40,7 +59,7 @@ void	sort_min_10(t_stk **a, t_stk **b, int len, t_var *v)
 		if ((*a)->num != min && tmp1 && tmp1->num == min)
 			pick_case(a, b, SA, v);
 		while (min != (*a)->num)
-			norm(a, b, v, min);
+			normalize(a, b, v, min);
 		if (min == (*a)->num)
 		{
 			tmp2 = *a;
@@ -51,12 +70,33 @@ void	sort_min_10(t_stk **a, t_stk **b, int len, t_var *v)
 	}
 }
 
+/*
+** This will execute both operations, being the first 'sa'.
+*/
 void	sort_3(t_stk **a, t_stk **b, t_var *v, int op)
 {
 	pick_case(a, b, SA, v);
 	pick_case(a, b, op, v);
 }
 
+/*
+** This parser first find the lowest value within the list;
+**
+** FIRST CASE - if the first number is lower than the second one and
+** the third number is the minimun value, it just send the last number
+** to the top;
+**
+** SECOND CASE - if first number is greater than the second and the
+** third one is the minimun value, it swap the first and second and
+** than send the third to the top.
+**
+** THIRD CASE - The minimun value is the second number, than it will
+** will find if the first number is greater than the third one,
+** and swap accordingly.
+**
+** FOURTH CASE - the last case occur if the first number is the
+** minimun value and the second is lower than the third one.
+*/
 void	case_with_3(t_stk **a, t_stk **b, int len, t_var *v)
 {
 	t_stk	*tmp;
@@ -82,6 +122,21 @@ void	case_with_3(t_stk **a, t_stk **b, int len, t_var *v)
 	}
 }
 
+/*
+** This parser will find if the stack meet its conditions
+** and execute the correct operation if needed.
+**
+** If len = 2 and the first number is bigger than the last one,
+** it will call the operator 'sa' and swap the numbers;
+** as for a len = 3, it will enter the case_with_3 sort function;
+** for any lenght within 3 > len >= 1 it will use an tricky logic,
+** sending the 1-7 greater numbers to stack b, depending of the length
+** of the list (if there is 10 numbers, it will send 7 numbers).
+** After that, it will sort the 3 remaining numbers in stack a and 
+** after that returning in order all numbers in stack 'b' to stack 'a'.
+**
+** Freeing every memory allocated to stack 'a' and 'b'.
+*/
 void	sort_short(t_stk **a, t_stk **b, int len, t_var *v)
 {
 	t_stk	*tmp;
@@ -93,7 +148,7 @@ void	sort_short(t_stk **a, t_stk **b, int len, t_var *v)
 		case_with_3(a, b, len, v);
 	else if (len > 3)
 	{
-		sort_min_10(a, b, len, v);
+		case_with_10(a, b, len, v);
 		case_with_3(a, b, 3, v);
 		while ((*b))
 		{

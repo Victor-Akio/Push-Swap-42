@@ -2,6 +2,8 @@ pyviz.py
 .vscode
 Output.log
 .vscode/launch.json
+tests
+checker_linux
 
 # Prerequisites
 *.d

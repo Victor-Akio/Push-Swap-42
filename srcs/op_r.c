@@ -6,12 +6,16 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 00:22:41 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/06/03 09:24:42 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/06/26 01:15:59 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+** This file has the operations regarding rotation-swaps;
+** 'ra' 'rb' 'rra' 'rrb'
+*/
 t_stk	*rr_swap(t_stk *top, t_stk *tmp)
 {
 	while (top->nxt)

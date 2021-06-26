@@ -6,12 +6,16 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 22:44:55 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/06/10 22:45:41 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/06/26 01:31:12 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+** This function will duplicate the list;
+** Returning the duplicated list;
+*/
 t_stk	*ft_lst_dup(t_stk *stk)
 {
 	t_stk	*tmp1;
@@ -35,6 +39,9 @@ t_stk	*ft_lst_dup(t_stk *stk)
 	return (tmp1);
 }
 
+/*
+** Find the bottom number of the list
+*/
 t_stk	*ft_lst_bottom(t_stk *a)
 {
 	t_stk	*tmp;

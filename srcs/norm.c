@@ -6,33 +6,37 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 22:53:52 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/06/10 22:46:46 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/06/26 02:18:41 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	normalize_fc(t_stk **a, t_stk **b, t_var *v, int max)
+/*
+** As the short sort, theses functions were set to better choose how to
+** rotate the stack 'a' and 'b';
+*/
+void	normalize_a(t_stk **a, t_stk **b, t_var *v, int pvt)
 {
 	int	idx;
-	int	half;
+	int	num;
 
-	idx = get_idx((*a), max, 1);
-	half = (list_size((*a)) / 2);
-	if (half > idx)
+	idx = get_idx((*a), pvt, 1);
+	num = (list_size((*a)) / 2);
+	if (idx < num)
 		pick_case(a, b, RA, v);
 	else
 		pick_case(a, b, RRA, v);
 }
 
-void	normalize_tc(t_stk **a, t_stk **b, t_var *v, int max)
+void	normalize_b(t_stk **a, t_stk **b, t_var *v, int pvt)
 {
 	int	idx;
-	int	half;
+	int	num;
 
-	idx = get_idx((*b), max, 2);
-	half = ft_abs((list_size((*b)) / 2));
-	if (half > idx && *b)
+	idx = get_idx((*b), pvt, 2);
+	num = ft_abs((list_size((*b)) / 2));
+	if (idx < num && *b)
 		pick_case(a, b, RB, v);
 	else if (*b)
 		pick_case(a, b, RRB, v);
