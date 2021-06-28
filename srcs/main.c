@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 05:39:26 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/06/26 03:32:47 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/06/26 10:34:46 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void	push_swap(t_var *v, int ac, char **av)
 	check_dup(v->split);
 	check_numbers(v->split);
 	v->a = fill_list(v, v->split, stk);
-	if (check_sort(&v->a, list_size(v->a)))
-		ft_exit_ps("ERROR - invalid list of arguments.\n", 1);
+	if (check_sort(&v->a, list_size(v->a)) == 1)
+		ft_exit_ps("ERROR - invalid list of arguments.\n", 0);
 	v->len = list_size(v->a);
 	free_stk(&stk);
 	if (v->len <= 10)
@@ -111,8 +111,6 @@ void	ft_exit_ps(char *arg, int err)
 {
 	if (err != 0)
 		ft_putstr_fd(arg, 2);
-	else
-		ft_putstr_fd("\n", 1);
 	exit(err);
 }
 

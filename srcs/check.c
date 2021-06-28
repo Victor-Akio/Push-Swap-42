@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 21:26:56 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/06/26 03:31:39 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/06/28 21:17:55 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	check_sort(t_stk **a, int len)
 	{
 		if ((tmp)->nxt != NULL && ((tmp)->num < (tmp)->nxt->num))
 			(tmp) = tmp->nxt;
-		return (0);
+		else
+			return (0);
 	}
 	return (1);
 }
@@ -53,7 +54,7 @@ void	check_dup(char **av)
 			else if (ft_strcmp(dup, av[j]) == 0)
 			{
 				ft_free_arg(&dup);
-				ft_exit_ps("ERROR - duplicated values.\n", 1);
+				ft_exit_ps("Error - duplicated values.\n", 1);
 			}
 			else
 				j++;
@@ -61,6 +62,19 @@ void	check_dup(char **av)
 		ft_free_arg(&dup);
 		i++;
 	}
+}
+
+/*
+** This function will check if there is any overflow.
+*/
+int	check_overflow(char *arg)
+{
+	long long	tmp;
+
+	tmp = ps_atoll(arg);
+	if (tmp >= INT_MIN && tmp <= INT_MAX && ft_strlen(arg) < 12)
+		return (1);
+	return (0);
 }
 
 /*
@@ -73,10 +87,12 @@ int	check_numbers(char **av)
 
 	i = -1;
 	if (!av[0])
-		ft_exit_ps("ERROR - no int found in args.\n", 1);
+		ft_exit_ps("Error - no int found in args.\n", 1);
 	while (av[++i])
 	{
 		j = -1;
+		if (check_overflow(av[i]) == 0)
+			ft_exit_ps("Error - Int Overflow.\n", 1);
 		while (av[i][++j])
 		{
 			if (ft_isalpha(av[i][j]) == 1 || av[i][j] == '.'
